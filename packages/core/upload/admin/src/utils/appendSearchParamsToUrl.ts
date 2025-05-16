@@ -7,7 +7,11 @@ const appendSearchParamsToUrl = ({ url, params }: AppendSearchParamsToUrlProps) 
   if (url === undefined || typeof params !== 'object') {
     return url;
   }
-
+  
+  if (url.indexOf('.r2.cloudflarestorage.com') !== -1) {
+    return url
+  }
+  
   const urlObj = new URL(url, window.strapi.backendURL);
 
   Object.entries(params).forEach(([key, value]) => {
